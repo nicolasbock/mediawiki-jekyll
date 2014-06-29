@@ -85,9 +85,9 @@ module Jekyll
       # YAML for the header
       data = {
         'title' => title.to_s
-      }.delete_if {|k,v| v.nil? || v == ''}.to_yml
+      }.delete_if {|k,v| v.nil? || v == ''}.to_yaml
 
-      File.option("_posts/#{name}", "w") do |f|
+      File.open("_posts/#{name}", "w") do |f|
         f.puts data
         f.puts "---"
         f.puts content
@@ -97,10 +97,10 @@ module Jekyll
 
     def self.sluggify(title)
       begin
-        require 'unidecode'
+        require 'unidecoder'
         title = title.to_ascii
       rescue
-        STDERR.puts "Could no require 'unidecode'. If you page titles have non-ASCII characters, you could get nicer permalinks by installing unidecode."
+        STDERR.puts "Could no require 'unidecoder'. If you page titles have non-ASCII characters, you could get nicer permalinks by installing unidecode."
       end
       title.downcase.gsub(/[^0-9A-Za-z]+/, " ").strip.gsub(" ", "-")
     end
