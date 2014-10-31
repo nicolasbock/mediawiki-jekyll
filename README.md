@@ -17,7 +17,7 @@ Edit your `settings.yml` file with relevant values to connect to your
 database. Once these are filled in:
 
 ```
-ruby generate.rb
+ruby convert.rb
 ```
 
 This will put all your Markdown pages in a directory called `pages`.
